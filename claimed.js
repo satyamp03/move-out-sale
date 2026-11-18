@@ -1,0 +1,6 @@
+// Claimed items. One card name per line, exactly as shown on the page.
+// To mark an item claimed, add its name in quotes with a comma after it.
+// To make it available again, delete its line.
+window.CLAIMED = [
+  "Whisk",
+];

@@ -144,6 +144,7 @@ h1 {
 .contact .kicker { margin-bottom: 6px; }
 .contact.note { margin-bottom: 32px; background: var(--surface); }
 .contact.note p:not(.kicker) { color: var(--ink); }
+.contact.note p:not(.kicker) + p { margin-top: 8px; }
 .contact p { margin: 0; }
 .contact p + p { margin-top: 6px; }
 .contact p:not(.kicker) + p { color: var(--muted); }
@@ -342,6 +343,7 @@ footer a { display: inline-block; padding: 10px 4px; }
   <div class="contact note">
     <p class="kicker">Also available</p>
     <p>I also have some perishable items that I don't think I'll be able to finish. So feel free to pick those up when you come to pick up your items.</p>
+    <p>I also have a bunch of Tupperware boxes and glass lunch boxes, and a set of measuring cups, that aren't in the photos. Ask me if you want any of them.</p>
   </div>
 
   <section class="controls" aria-label="Find items">
@@ -384,6 +386,7 @@ footer a { display: inline-block; padding: 10px 4px; }
   </div>
 </div>
 
+<script src="claimed.js"></script>
 <script>
 (function () {
   var CATS = ["Cookware & Bakeware", "Dishes & Glassware", "Appliances & Bigger Pieces", "Pantry & Extras"];
@@ -418,7 +421,7 @@ footer a { display: inline-block; padding: 10px 4px; }
   a(0, "Potato masher", "Wire. Drawer.");
   a(0, "Peeler", "For vegetables. Drawer.");
   a(0, "Zester", "Rasp style. Drawer.");
-  c(0, "Whisk", "Small and wire. Drawer.");
+  a(0, "Whisk", "Small and wire. Drawer.");
 
   /* Dishes & Glassware */
   a(1, "Dinner plates", "Mostly white, stacked. Upper cabinet, right, bottom shelf.");
@@ -469,6 +472,16 @@ footer a { display: inline-block; padding: 10px 4px; }
   a(3, "Chopsticks", "Bamboo. Drawer.");
   a(3, "Corkscrew", "Waiter's style. Drawer.");
   a(3, "Tea infuser", "Mesh ball. Drawer.");
+  a(3, "More Tupperware boxes", "A bunch. Not in the photos. Ask me.");
+  a(3, "Glass lunch boxes", "A bunch. Not in the photos. Ask me.");
+  a(3, "Extra measuring cups", "A set. Not in the photos. Ask me.");
+
+  /* Claimed items come from claimed.js (see claim.py). Names must match the card names. */
+  var claimedList = {};
+  (window.CLAIMED || []).forEach(function (n) { claimedList[String(n).trim().toLowerCase()] = 1; });
+  items.forEach(function (it) {
+    if (it.status === "available" && claimedList[it.name.toLowerCase()]) it.status = "claimed";
+  });
 
   /* Search: ignore case, accents, apostrophes and plurals; match words in any order. */
   var TAGS = {
@@ -538,6 +551,9 @@ footer a { display: inline-block; padding: 10px 4px; }
     "Chopsticks": "chopstick bamboo",
     "Corkscrew": "wine opener bottle",
     "Spices": "spice seasoning herbs salt pepper",
+    "More Tupperware boxes": "tupperware container containers food storage lunch box leftovers",
+    "Glass lunch boxes": "lunch box glass container containers storage meal prep",
+    "Extra measuring cups": "measuring cup cups spoon baking",
     "Tea infuser": "strainer loose leaf"
   };
   var STOP = { a: 1, an: 1, and: 1, the: 1, of: 1, with: 1, for: 1, in: 1, my: 1, some: 1, any: 1, i: 1, want: 1 };
