@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Satyam's Kitchen Clear-Out Open House</title>
+<meta name="description" content="Kitchen items to claim near Brentwood Mall/station, Burnaby. First come first served.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700&display=swap" rel="stylesheet">
+<style>
+/* Warm editorial look. Layout: photo strip, title block, facts, controls, card grid per category, sticky list bar. Single light theme by choice. */
+:root {
+  --bg: #FAF6EF;
+  --surface: #FFFFFF;
+  --surface-2: #F1EADD;
+  --ink: #221D18;
+  --muted: #6F6357;
+  --line: #E3D8C6;
+  --accent: #BC4B24;
+  --accent-dark: #9A3B1A;
+  --accent-ink: #FFFFFF;
+  --ok-bg: #E7EFD8;
+  --ok-ink: #3E5E14;
+  --ok-line: #C4D6A4;
+  --off-bg: #EFE9E0;
+  --off-ink: #7A6E5F;
+  --shadow: 0 10px 30px rgba(60, 38, 18, .10);
+  --font-display: "DM Serif Display", Georgia, "Times New Roman", serif;
+  --font-body: "DM Sans", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--bg); }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  padding-bottom: 9rem;
+}
+a { color: var(--accent-dark); text-underline-offset: 3px; }
+a:hover { color: var(--accent); }
+button, input { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+em { font-style: italic; color: var(--accent); }
+h1 em { white-space: nowrap; }
+
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+
+.kicker {
+  font-size: 0.75rem; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+}
+
+/* Photos */
+.gallery {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  padding: 20px 16px 36px;
+  scroll-padding-inline: 16px;
+  max-width: 1040px;
+  margin: 0 auto -14px;
+  -webkit-overflow-scrolling: touch;
+}
+.shot {
+  position: relative;
+  flex: 0 0 auto;
+  height: 230px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  cursor: zoom-in;
+  scroll-snap-align: start;
+}
+.shot img { display: block; height: 100%; width: auto; }
+.shot span {
+  position: absolute; left: 10px; bottom: 10px;
+  background: rgba(34, 29, 24, .82);
+  color: #FAF6EF;
+  font-size: 0.6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 999px;
+}
+@media (min-width: 720px) { .shot { height: 260px; } }
+@media (min-width: 1000px) {
+  .gallery { display: grid; grid-template-columns: repeat(4, 1fr); overflow: visible; }
+  .shot { height: 250px; }
+  .shot img { width: 100%; height: 100%; object-fit: cover; }
+}
+
+/* Title, intro, facts */
+.hero { padding-top: 6px; }
+h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(38px, 8vw, 64px);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  margin: 10px 0 14px;
+  text-wrap: balance;
+}
+.intro { max-width: 60ch; margin: 0 0 8px; font-size: 1.125rem; }
+.intro + .intro { color: var(--muted); font-size: 1rem; }
+
+.facts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 24px 0 16px;
+}
+.fact {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 16px 18px;
+}
+.fact dt { font-size: 0.6875rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+.fact dd { margin: 0; font-size: 1.0625rem; font-weight: 500; }
+.fact .fine { margin: 6px 0 0; font-size: 0.75rem; color: var(--muted); }
+.fact dd b { font-variant-numeric: tabular-nums; font-weight: 700; }
+.fact.status b:first-child { color: var(--ok-ink); }
+@media (min-width: 720px) { .facts { grid-template-columns: 1.4fr 1.1fr .8fr; } }
+
+.contact {
+  max-width: 72ch;
+  margin: 0 0 12px;
+  padding: 16px 18px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+.contact .kicker { margin-bottom: 6px; }
+.contact.note { margin-bottom: 32px; background: var(--surface); }
+.contact.note p:not(.kicker) { color: var(--ink); }
+.contact p { margin: 0; }
+.contact p + p { margin-top: 6px; }
+.contact p:not(.kicker) + p { color: var(--muted); }
+
+/* Controls */
+.controls { display: grid; gap: 12px; margin-bottom: 8px; }
+.search {
+  width: 100%;
+  padding: 13px 18px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 1rem;
+}
+.search::placeholder { color: var(--muted); }
+.pills { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px; }
+.pill {
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 9px 16px;
+  cursor: pointer;
+  font-size: 0.875rem; font-weight: 500;
+  white-space: nowrap;
+}
+.pill:hover { border-color: var(--accent); }
+.pill[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.control-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+.toggle { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-weight: 500; min-height: 44px; }
+.toggle input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.track {
+  width: 46px; height: 28px; border-radius: 999px;
+  background: var(--line); position: relative; transition: background .15s;
+  flex: 0 0 auto;
+}
+.track::after {
+  content: ""; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px;
+  border-radius: 50%; background: var(--surface); box-shadow: 0 1px 3px rgba(60,38,18,.3);
+  transition: transform .15s;
+}
+.toggle input:checked + .track { background: var(--accent); }
+.toggle input:checked + .track::after { transform: translateX(18px); }
+.toggle input:focus-visible + .track { outline: 3px solid var(--accent); outline-offset: 2px; }
+.count { color: var(--muted); font-size: 0.875rem; font-variant-numeric: tabular-nums; }
+
+/* Sections and cards */
+.group { margin-top: 36px; }
+.group-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 0 0 14px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+.group h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(26px, 5vw, 34px);
+  line-height: 1.1;
+  margin: 0;
+  text-wrap: balance;
+}
+.group-head .kicker { color: var(--muted); letter-spacing: .14em; white-space: nowrap; }
+.grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
+@media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1000px) { .grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+.card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px 12px;
+  align-items: start;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 14px 16px;
+}
+.card h3 { margin: 8px 0 2px; font-size: 1.0625rem; line-height: 1.25; font-weight: 700; }
+.card p { margin: 0; color: var(--muted); font-size: 0.875rem; }
+.card .reason { color: var(--ink); font-weight: 500; margin-top: 6px; }
+.chip {
+  display: inline-block;
+  font-size: 0.6875rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 999px; white-space: nowrap;
+  background: var(--ok-bg); color: var(--ok-ink); border: 1px solid var(--ok-line);
+}
+.add {
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 0.875rem; font-weight: 700;
+  cursor: pointer;
+  min-width: 118px;
+  align-self: center;
+}
+.add:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+
+.card[data-state="picked"] { border-color: var(--accent); }
+.card[data-state="picked"] .chip { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.card[data-state="picked"] .add { background: transparent; color: var(--accent-dark); border-color: var(--line); }
+.card[data-state="picked"] .add:hover { border-color: var(--accent); background: var(--surface-2); }
+.card[data-state="claimed"] .chip,
+.card[data-state="excluded"] .chip { background: var(--off-bg); color: var(--off-ink); border-color: var(--line); }
+.card[data-state="claimed"] h3 { color: var(--muted); }
+.card[data-state="excluded"] { background: var(--surface-2); box-shadow: none; }
+.card[data-state="excluded"] h3 { color: var(--muted); }
+
+.empty { text-align: center; color: var(--muted); padding: 32px 0; display: grid; justify-items: center; gap: 12px; }
+.empty p { margin: 0; }
+
+footer { margin: 48px 0 0; padding-top: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9375rem; }
+footer p { margin: 0 0 6px; }
+footer a { display: inline-block; padding: 10px 4px; }
+
+/* List bar */
+.listbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -10px 30px rgba(60, 38, 18, .10);
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+}
+@media (min-width: 1100px) { .listbar { padding-inline: calc((100vw - 1040px) / 2 + 16px); } .listbar-in { max-width: none; } }
+.listbar-in { max-width: 1040px; margin: 0 auto; padding-inline: 0; display: flex; align-items: center; gap: 10px; }
+.picked { flex: 1 1 auto; font-weight: 500; min-width: 0; }
+.picked b { font-family: var(--font-display); font-weight: 400; font-size: 1.625rem; line-height: 1; font-variant-numeric: tabular-nums; color: var(--accent); }
+.btn {
+  border-radius: 999px; padding: 11px 18px; font-weight: 700; cursor: pointer;
+  border: 1px solid var(--line); background: var(--surface); white-space: nowrap;
+}
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn.primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+.btn:disabled, .btn.primary:disabled { background: var(--surface-2); color: var(--muted); border-color: var(--line); cursor: not-allowed; }
+.btn:disabled:hover, .btn.primary:disabled:hover { background: var(--surface-2); border-color: var(--line); }
+
+.panel {
+  max-width: 1040px; margin: 0 auto 12px;
+  max-height: 45vh; overflow-y: auto;
+  border: 1px solid var(--line); border-radius: 18px; padding: 8px 16px;
+  background: var(--surface-2);
+}
+.panel ul { list-style: none; margin: 0; padding: 0; }
+.panel li { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.panel li:last-child { border-bottom: 0; }
+.panel .rm { border: 0; background: none; color: var(--accent-dark); font-weight: 700; cursor: pointer; padding: 10px 12px; }
+.panel p { margin: 6px 0 8px; color: var(--muted); font-size: 0.875rem; }
+.panel textarea { width: 100%; min-height: 120px; border: 1px solid var(--line); border-radius: 14px; padding: 10px; background: var(--surface); }
+
+/* Photo viewer */
+.viewer {
+  position: fixed; inset: 0; z-index: 40;
+  background: rgba(34, 29, 24, .97);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 16px; gap: 12px;
+}
+[hidden] { display: none !important; }
+.viewer img { max-width: 100%; max-height: 78vh; max-height: calc(100dvh - 150px); border-radius: 14px; }
+.viewer .cap { color: #FAF6EF; font-size: 0.8125rem; letter-spacing: .08em; text-transform: uppercase; }
+.viewer .vbtns { display: flex; gap: 10px; }
+.viewer .btn { color: #FAF6EF; background: transparent; border-color: rgba(250,246,239,.4); }
+.viewer .btn:hover { border-color: #FAF6EF; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+@media (max-width: 400px) { .btn { padding: 10px 13px; } .add { min-width: 108px; padding: 10px 10px; } }
+</style>
+</head>
+<body>
+
+<div class="gallery" aria-label="Photos of the kitchen">
+  <button class="shot" type="button" data-i="0"><img src="img/upper-1.jpg" width="1200" height="900" alt="Open upper cabinets with glasses, mugs, bowls and plates"><span>Upper cabinets</span></button>
+  <button class="shot" type="button" data-i="1"><img src="img/lower-straight.jpg" width="1200" height="900" alt="Open lower cabinets with pots, pans and baking dishes"><span>Lower cabinets</span></button>
+  <button class="shot" type="button" data-i="2"><img src="img/drawer-open.jpg" width="1200" height="900" alt="Open drawer with cutlery and kitchen utensils"><span>Drawer</span></button>
+  <button class="shot" type="button" data-i="3"><img src="img/pantry-1.jpg" width="900" height="1200" alt="Open pantry with appliances, drinks and food on four shelves"><span>Pantry</span></button>
+</div>
+
+<main class="wrap">
+  <div class="hero">
+  <p class="kicker">Moving out · Burnaby</p>
+  <h1>Satyam's Kitchen <em>Clear-Out</em> Open House</h1>
+  <p class="intro">I'm moving. Everything in the photos is up for grabs, first come first served. Pickup is near Brentwood Mall/station, Burnaby.</p>
+  <p class="intro">This is open to friends and mutual friends. Add what you want to your list, copy it, and text it to me.</p>
+  </div>
+
+  <dl class="facts">
+    <div class="fact"><dt>Price</dt><dd>Bulk price for everything — for friends: free, if not bulk price</dd></div>
+    <div class="fact"><dt>Pickup</dt><dd>near Brentwood Mall/station, Burnaby</dd></div>
+    <div class="fact status"><dt>Status</dt><dd aria-live="polite"><b id="nAvail">0</b> available / <b id="nClaimed">0</b> claimed</dd>
+      <p class="fine">Items you pick count as claimed.</p></div>
+  </dl>
+
+  <div class="contact">
+    <p class="kicker">Questions</p>
+    <p>Some things aren't visible in every photo. If you want to check something, or want something in particular, call or text me.</p>
+    <p>Items marked Not included aren't available here. Most are listed for sale separately. You can find my listings on <a href="https://ca.karrotmarket.com/u/pVOz2ZYk32W7r9vd?install_from=user_profile" target="_blank" rel="noopener">Karrot</a> and <a href="https://www.facebook.com/marketplace/profile/100001128580568/?ref=permalink&amp;tab=listings&amp;mibextid=6ojiHh" target="_blank" rel="noopener">Facebook Marketplace</a>.</p>
+  </div>
+
+  <div class="contact note">
+    <p class="kicker">Also available</p>
+    <p>I also have some perishable items that I don't think I'll be able to finish. So feel free to pick those up when you come to pick up your items.</p>
+  </div>
+
+  <section class="controls" aria-label="Find items">
+    <input class="search" id="q" type="search" placeholder="Search items" aria-label="Search items" autocomplete="off">
+    <div class="pills" id="pills" role="group" aria-label="Category"></div>
+    <div class="control-row">
+      <label class="toggle" for="availOnly"><input type="checkbox" id="availOnly"><span class="track" aria-hidden="true"></span>Available only</label>
+      <span class="count" id="shown" aria-live="polite"></span>
+    </div>
+  </section>
+
+  <div id="groups"></div>
+  <div class="empty" id="empty" hidden>
+    <p id="emptyMsg">No items match.</p>
+    <button class="btn" type="button" id="clearFilters" hidden>Clear filters</button>
+  </div>
+
+  <footer>
+    <p>Know a mutual friend who could use something? Send them this page.</p>
+    <p>My listings: <a href="https://ca.karrotmarket.com/u/pVOz2ZYk32W7r9vd?install_from=user_profile" target="_blank" rel="noopener">Karrot</a> · <a href="https://www.facebook.com/marketplace/profile/100001128580568/?ref=permalink&amp;tab=listings&amp;mibextid=6ojiHh" target="_blank" rel="noopener">Facebook Marketplace</a></p>
+  </footer>
+</main>
+
+<div class="listbar">
+  <div class="panel" id="panel" hidden></div>
+  <div class="listbar-in">
+    <div class="picked" aria-live="polite" id="pickedText">No items yet</div>
+    <button class="btn" type="button" id="viewBtn" aria-expanded="false" aria-controls="panel">View</button>
+    <button class="btn primary" type="button" id="copyBtn" disabled>Copy my list</button>
+  </div>
+</div>
+
+<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <img id="vImg" alt="">
+  <div class="cap" id="vCap"></div>
+  <div class="vbtns">
+    <button class="btn" type="button" id="vPrev">Previous</button>
+    <button class="btn" type="button" id="vNext">Next</button>
+    <button class="btn" type="button" id="vClose">Close</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  var CATS = ["Cookware & Bakeware", "Dishes & Glassware", "Appliances & Bigger Pieces", "Pantry & Extras"];
+  var items = [];
+  // a = available, c = already claimed (swap a( for c( to mark an item claimed), x = not included.
+  function add(cat, name, note, status, reason) {
+    items.push({ id: name.toLowerCase().replace(/[^a-z0-9]+/g, "-"), cat: cat, name: name, note: note, status: status, reason: reason || "" });
+  }
+  function a(cat, name, note) { add(cat, name, note, "available"); }
+  function c(cat, name, note) { add(cat, name, note, "claimed"); }
+  function x(cat, name, note, reason) { add(cat, name, note, "excluded", reason); }
+
+  /* Cookware & Bakeware */
+  a(0, "Pots with lids", "Four pots, stainless and nonstick. Lower cabinet, left, top shelf.");
+  a(0, "Frying pans", "Nonstick and stainless, one with a glass lid. Lower cabinet, left, bottom shelf.");
+  a(0, "Baking sheets", "A stack of dark sheets. Lower cabinet, right, top shelf.");
+  a(0, "Glass baking dish", "Rectangular. Lower cabinet, right, top shelf.");
+  a(0, "Blue baking dishes", "Two ceramic dishes. Lower cabinet, right, top shelf.");
+  a(0, "Loaf pan", "Grey metal. Lower cabinet, right, top shelf.");
+  a(0, "Roasting pan", "Black and speckled. Lower cabinet, right, bottom shelf.");
+  a(0, "Mixing bowls", "Red, orange and blue, nested. Lower cabinet, right, bottom shelf.");
+  a(0, "Idli steaming trays", "Stainless steel, stacked. Lower cabinet, right, bottom shelf.");
+  a(0, "Colanders", "White, plus a red-handled strainer. Lower cabinet, left, bottom shelf.");
+  a(0, "Box grater", "Stainless steel. Lower cabinet, left, bottom shelf.");
+  a(0, "Cutting mats", "Blue and yellow, flexible. Lower cabinets, bottom shelves.");
+  a(0, "Chef's knife", "In the cutlery tray. Drawer.");
+  a(0, "Tongs", "Metal and silicone. Drawer.");
+  a(0, "Spatulas", "Silicone and metal. Drawer.");
+  a(0, "Wooden spoons", "Spoon and spatula. Drawer.");
+  a(0, "Slotted spoon", "Stainless steel. Drawer.");
+  a(0, "Black ladle", "Large, with a round bowl. Drawer.");
+  a(0, "Potato masher", "Wire. Drawer.");
+  a(0, "Peeler", "For vegetables. Drawer.");
+  a(0, "Zester", "Rasp style. Drawer.");
+  a(0, "Whisk", "Small and wire. Drawer.");
+
+  /* Dishes & Glassware */
+  a(1, "Dinner plates", "Mostly white, stacked. Upper cabinet, right, bottom shelf.");
+  a(1, "Small plates", "Side plates and one divided plate. Upper cabinet, right, bottom shelf.");
+  a(1, "Pasta bowls", "White and shallow. Upper cabinet, right, middle shelf.");
+  a(1, "Small bowls", "White, in a few sizes. Upper cabinet, right, middle shelf.");
+  a(1, "Blue bowl", "One large bowl. Upper cabinet, right, middle shelf.");
+  a(1, "Serving platter", "White oval. Upper cabinet, right, top shelf.");
+  a(1, "Dark plates", "Two dark speckled plates. Upper cabinet, middle, top shelf.");
+  a(1, "Mugs", "White and black, some printed. Upper cabinet, middle, middle shelf.");
+  a(1, "Small cups", "Patterned and plain. Upper cabinet, middle, top shelf.");
+  a(1, "Travel mug", "Stainless steel. Upper cabinet, middle, top shelf.");
+  a(1, "Sports bottles", "Two reusable bottles. Upper cabinet, middle, middle and bottom shelves.");
+  a(1, "Steel tumbler", "Small, with a Mariners logo. Upper cabinet, left, middle shelf.");
+  a(1, "Coca-Cola cup", "Can-shaped. Upper cabinet, left, middle shelf.");
+  a(1, "Wine glasses", "Stemmed. Upper cabinet, left, middle shelf.");
+  a(1, "Drinking glasses", "Clear tumblers. Upper cabinets, bottom shelves.");
+  a(1, "Glass jars", "With lids. Upper cabinet, left, bottom shelf.");
+  a(1, "Glass pitcher", "Small, with a handle. Upper cabinet, left, bottom shelf.");
+  a(1, "Blender cups", "Clear, with black bases. Upper cabinets, left and middle.");
+  a(1, "Orange tumbler", "Large and insulated. Pantry, left, third shelf.");
+  a(1, "Cutlery", "Forks, spoons and knives in a mint green tray. Drawer.");
+  x(1, "Blume Cloud Mug (boxed)", "Pantry, left, third shelf.", "Listed for sale separately.");
+
+  /* Appliances & Bigger Pieces */
+  a(2, "Toaster", "Stainless steel, two slots. Pantry, left, bottom shelf.");
+  a(2, "Instant Pot (bottom shelf)", "Next to the toaster. Pantry, left, bottom shelf.");
+  x(2, "Instant Pot (top shelf)", "Pantry, left, top shelf.", "Broken. Not available.");
+  a(2, "French press", "Glass and black. Pantry, left, second shelf.");
+  a(2, "Food chopper", "Small, with a clear bowl. Pantry, left, bottom shelf.");
+  a(2, "Cooler bag", "Grey and insulated. Pantry, right, top shelf.");
+  x(2, "Salad spinner", "Lower cabinet, right, bottom shelf.", "Listed for sale separately.");
+  x(2, "Nespresso Vertuo Pop+", "Coffee machine.", "For sale separately, $50.");
+
+  /* Pantry & Extras */
+  a(3, "Tupperware containers", "Clear and rectangular, stacked. Pantry, right, bottom shelf.");
+  x(3, "Collapsible food storage containers", "Blue, stacked. Pantry, left, third shelf.", "Listed for sale separately.");
+  a(3, "Clear canister", "With a black lid. Pantry, right, bottom shelf.");
+  a(3, "Glass bottles", "Including a swing-top. Pantry, left, bottom shelf.");
+  a(3, "Paper cups", "Brown, stacked. Pantry, left, second shelf.");
+  a(3, "Halloween bowl", "Orange, Trick or Treat. Pantry, left, second shelf.");
+  a(3, "Hip flask", "Stainless steel. Pantry, left, third shelf.");
+  a(3, "Spices", "A bunch of them. Ask me when you come.");
+  a(3, "AeroPress filters", "Box of 200. Drawer.");
+  a(3, "Measuring cups and spoons", "Red cups, white spoons. Drawer.");
+  a(3, "Kitchen scissors", "Orange handles, plus a smaller pair. Drawer.");
+  a(3, "Citrus juicer", "Green. Drawer.");
+  a(3, "Chopsticks", "Bamboo. Drawer.");
+  a(3, "Corkscrew", "Waiter's style. Drawer.");
+  a(3, "Tea infuser", "Mesh ball. Drawer.");
+
+  /* Search: ignore case, accents, apostrophes and plurals; match words in any order. */
+  var TAGS = {
+    "Pots with lids": "pot saucepan stockpot lid cookware",
+    "Frying pans": "frying fry pan skillet pans nonstick",
+    "Baking sheets": "baking sheet cookie tray pan oven",
+    "Glass baking dish": "pyrex casserole oven",
+    "Blue baking dishes": "casserole ceramic oven",
+    "Loaf pan": "bread baking",
+    "Roasting pan": "roaster oven turkey",
+    "Mixing bowls": "bowl bowls",
+    "Idli steaming trays": "idli steamer steam rack",
+    "Colanders": "colander strainer sieve drain",
+    "Box grater": "cheese shredder",
+    "Cutting mats": "cutting board chopping",
+    "Chef's knife": "knife knives",
+    "Tongs": "tong",
+    "Spatulas": "spatula turner flipper",
+    "Wooden spoons": "spoon spatula",
+    "Black ladle": "ladle spoon serving",
+    "Peeler": "vegetable",
+    "Zester": "grater microplane lemon citrus",
+    "Dinner plates": "plate dishes",
+    "Small plates": "plate side dishes",
+    "Pasta bowls": "bowl dishes",
+    "Small bowls": "bowl dishes",
+    "Blue bowl": "bowl dishes",
+    "Serving platter": "plate dish tray",
+    "Dark plates": "plate dishes",
+    "Mugs": "mug cup coffee tea",
+    "Small cups": "cup mug",
+    "Travel mug": "thermos tumbler coffee",
+    "Sports bottles": "water bottle",
+    "Steel tumbler": "cup mariners baseball",
+    "Coca-Cola cup": "coke cup glass",
+    "Wine glasses": "glass stemware",
+    "Drinking glasses": "glass cup tumbler",
+    "Glass jars": "jar mason",
+    "Glass pitcher": "jug carafe",
+    "Blender cups": "blender cup smoothie",
+    "Orange tumbler": "yeti cup thermos travel",
+    "Cutlery": "fork spoon knife knives silverware flatware utensils",
+    "Toaster": "toast bread",
+    "Instant Pot (bottom shelf)": "pressure cooker multicooker",
+    "Instant Pot (top shelf)": "pressure cooker multicooker",
+    "French press": "coffee",
+    "Food chopper": "mini processor",
+    "Cooler bag": "lunch insulated cooler",
+    "Tupperware containers": "food storage container containers leftovers",
+    "Clear canister": "storage container",
+    "Glass bottles": "bottle",
+    "Halloween bowl": "trick treat candy",
+    "Hip flask": "flask booze",
+    "Tea": "twinings stash earl grey",
+        "Instant drink mix": "hot chocolate cappuccino",
+    "Pasta": "noodles rotini catelli",
+    "Quick oats": "oatmeal quaker",
+    "Pasta sauce and jars": "sauce jar",
+    "Canned food": "can tin",
+    "Wine": "red bottle alcohol",
+    "Spirits": "gin liquor alcohol bottle tanqueray",
+    "Canned drinks": "can soda seltzer cocktail margarita alcohol",
+    "AeroPress filters": "coffee filter",
+    "Measuring cups and spoons": "measuring cup spoon baking",
+    "Kitchen scissors": "scissors shears",
+    "Citrus juicer": "lemon lime orange squeezer reamer",
+    "Chopsticks": "chopstick bamboo",
+    "Corkscrew": "wine opener bottle",
+    "Spices": "spice seasoning herbs salt pepper",
+    "Tea infuser": "strainer loose leaf"
+  };
+  var STOP = { a: 1, an: 1, and: 1, the: 1, of: 1, with: 1, for: 1, in: 1, my: 1, some: 1, any: 1, i: 1, want: 1 };
+  var IRREG = { knives: "knife", shelves: "shelf", glasses: "glass", dishes: "dish", boxes: "box", cherries: "cherry" };
+  function stem(w) {
+    if (IRREG[w]) return IRREG[w];
+    if (w.length > 4 && /ies$/.test(w)) return w.slice(0, -3) + "y";
+    if (w.length > 4 && /(ches|shes|sses|xes|zes)$/.test(w)) return w.slice(0, -2);
+    if (w.length > 3 && /s$/.test(w) && !/(ss|us|is)$/.test(w)) return w.slice(0, -1);
+    return w;
+  }
+  function words(str) {
+    var t = String(str).toLowerCase();
+    try { t = t.normalize("NFD").replace(/[̀-ͯ]/g, ""); } catch (e) {}
+    t = t.replace(/['’`]/g, "").replace(/&/g, " and ").replace(/[^a-z0-9$]+/g, " ").trim();
+    return t ? t.split(" ") : [];
+  }
+  items.forEach(function (it) {
+    it.hay = " " + words(it.name + " " + it.note + " " + it.reason + " " + (TAGS[it.name] || "")).map(stem).join(" ") + " ";
+  });
+  // A word counts as a whole word if any item uses it; otherwise it is treated as the start of a word.
+  var ALLWORDS = {};
+  items.forEach(function (it) { it.hay.trim().split(" ").forEach(function (w) { ALLWORDS[w] = 1; }); });
+  function has(it, tok) { return it.hay.indexOf(ALLWORDS[tok] ? " " + tok + " " : " " + tok) !== -1; }
+  function queryTokens(q) {
+    return words(q).filter(function (w) { return !STOP[w]; }).map(stem);
+  }
+
+  /* State */
+  var KEY = "kitchen-clearout-list-v1";
+  var picked = new Set();
+  try {
+    var saved = JSON.parse(localStorage.getItem(KEY) || "[]");
+    saved.forEach(function (id) { picked.add(id); });
+  } catch (e) {}
+  function persist() { try { localStorage.setItem(KEY, JSON.stringify(Array.from(picked))); } catch (e) {} }
+
+  var byId = {};
+  items.forEach(function (it) { byId[it.id] = it; });
+  // Drop saved picks that no longer exist or are no longer available.
+  Array.from(picked).forEach(function (id) { if (!byId[id] || byId[id].status !== "available") picked.delete(id); });
+  persist();
+
+  var filter = { cat: -1, q: "", availOnly: false };
+  var chipText = { available: "Available", picked: "On my list", claimed: "Claimed", excluded: "Not included" };
+
+  function $(id) { return document.getElementById(id); }
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text) n.textContent = text;
+    return n;
+  }
+  function stateOf(it) { return it.status === "available" && picked.has(it.id) ? "picked" : it.status; }
+
+  /* Build pills and cards once */
+  var pills = $("pills");
+  function setCat(cat) {
+    filter.cat = cat;
+    Array.prototype.forEach.call(pills.children, function (p, i) { p.setAttribute("aria-pressed", String(i - 1 === cat)); });
+    apply();
+  }
+  function makePill(label, cat) {
+    var b = el("button", "pill", label);
+    b.type = "button";
+    b.setAttribute("aria-pressed", cat === -1 ? "true" : "false");
+    b.addEventListener("click", function () { setCat(cat); });
+    pills.appendChild(b);
+  }
+  makePill("All", -1);
+  CATS.forEach(function (name, i) { makePill(name, i); });
+
+  var groupsEl = $("groups");
+  var groups = CATS.map(function (name, i) {
+    var sec = el("section", "group");
+    sec.setAttribute("aria-labelledby", "h-" + i);
+    var head = el("div", "group-head");
+    var h = el("h2");
+    h.id = "h-" + i;
+    var parts = name.split(" ");
+    var lastWord = parts.pop();
+    h.appendChild(document.createTextNode(parts.join(" ") + " "));
+    h.appendChild(el("em", "", lastWord));
+    var small = el("p", "kicker");
+    head.appendChild(h); head.appendChild(small);
+    var grid = el("div", "grid");
+    sec.appendChild(head); sec.appendChild(grid);
+    groupsEl.appendChild(sec);
+    return { sec: sec, grid: grid, small: small };
+  });
+
+  items.forEach(function (it) {
+    var card = el("article", "card");
+    var main = el("div");
+    var chip = el("span", "chip");
+    main.appendChild(chip);
+    main.appendChild(el("h3", "", it.name));
+    main.appendChild(el("p", "", it.note));
+    if (it.reason) main.appendChild(el("p", "reason", it.reason));
+    card.appendChild(main);
+    var btn = null;
+    if (it.status === "available") {
+      btn = el("button", "add");
+      btn.type = "button";
+      btn.addEventListener("click", function () {
+        if (picked.has(it.id)) picked.delete(it.id); else picked.add(it.id);
+        persist();
+        paintCard(it);
+        update();
+      });
+      card.appendChild(btn);
+    }
+    it.card = card; it.chip = chip; it.btn = btn;
+    paintCard(it);
+    groups[it.cat].grid.appendChild(card);
+  });
+
+  function paintCard(it) {
+    var s = stateOf(it);
+    it.card.setAttribute("data-state", s);
+    it.chip.textContent = chipText[s];
+    if (it.btn) {
+      var on = s === "picked";
+      it.btn.textContent = on ? "Remove from list" : "Add to my list";
+      it.btn.setAttribute("aria-label", (on ? "Remove " : "Add ") + it.name + (on ? " from my list" : " to my list"));
+    }
+  }
+
+  /* Filtering */
+  function hasAll(it, toks) { for (var i = 0; i < toks.length; i++) if (!has(it, toks[i])) return false; return true; }
+  function hasAny(it, toks) { for (var i = 0; i < toks.length; i++) if (has(it, toks[i])) return true; return false; }
+  function apply() {
+    var toks = queryTokens(filter.q);
+    var base = items.filter(function (it) {
+      return (filter.cat === -1 || filter.cat === it.cat) && (!filter.availOnly || it.status === "available");
+    });
+    var hits = base, loose = false;
+    if (toks.length) {
+      hits = base.filter(function (it) { return hasAll(it, toks); });
+      if (!hits.length && toks.length > 1) { hits = base.filter(function (it) { return hasAny(it, toks); }); loose = hits.length > 0; }
+    }
+    var set = new Set(hits.map(function (it) { return it.id; }));
+    items.forEach(function (it) { it.card.hidden = !set.has(it.id); });
+    groups.forEach(function (g, i) {
+      var n = hits.filter(function (it) { return it.cat === i; }).length;
+      g.sec.hidden = n === 0;
+      g.small.textContent = n + (n === 1 ? " item" : " items");
+    });
+    $("shown").textContent = "Showing " + hits.length + " of " + items.length + (loose ? " (any word)" : "");
+    var empty = hits.length === 0;
+    $("empty").hidden = !empty;
+    if (empty) {
+      var why = [];
+      if (filter.cat !== -1) why.push("the " + CATS[filter.cat] + " filter");
+      if (filter.availOnly) why.push("Available only");
+      var msg = filter.q.trim() ? "No items match \u201c" + filter.q.trim() + "\u201d." : "No items to show.";
+      if (why.length) msg += " " + why.join(" and ") + (why.length > 1 ? " are" : " is") + " on.";
+      else msg += " Try another word, or message me to ask.";
+      $("emptyMsg").textContent = msg;
+      $("clearFilters").hidden = !why.length;
+    }
+  }
+  $("q").addEventListener("input", function (e) { filter.q = e.target.value; apply(); });
+  $("q").addEventListener("search", function (e) { filter.q = e.target.value; apply(); });
+  $("availOnly").addEventListener("change", function (e) { filter.availOnly = e.target.checked; apply(); });
+  $("clearFilters").addEventListener("click", function () {
+    filter.availOnly = false; $("availOnly").checked = false;
+    setCat(-1);
+  });
+
+  /* Counts, list bar, panel */
+  function pickedItems() { return items.filter(function (it) { return picked.has(it.id); }); }
+
+  function update() {
+    var list = pickedItems();
+    var avail = items.filter(function (it) { return it.status === "available" && !picked.has(it.id); }).length;
+    var claimed = items.filter(function (it) { return it.status === "claimed"; }).length + list.length;
+    $("nAvail").textContent = avail;
+    $("nClaimed").textContent = claimed;
+    var n = list.length;
+    var t = $("pickedText");
+    t.textContent = "";
+    if (n === 0) t.textContent = "No items yet";
+    else { var b = el("b", "", String(n)); t.appendChild(b); t.appendChild(document.createTextNode(n === 1 ? " item picked" : " items picked")); }
+    $("copyBtn").disabled = n === 0;
+    $("viewBtn").disabled = n === 0;
+    if (n === 0) togglePanel(false);
+    else if (!$("panel").hidden) renderPanel();
+  }
+
+  function listText() {
+    var list = pickedItems();
+    var lines = ["Satyam's Kitchen Clear-Out Open House. My list (" + list.length + (list.length === 1 ? " item" : " items") + "):"];
+    list.forEach(function (it, i) { lines.push((i + 1) + ". " + it.name); });
+    lines.push("Thanks!");
+    return lines.join("\n");
+  }
+
+  function renderPanel(fallbackText) {
+    var p = $("panel");
+    p.textContent = "";
+    if (fallbackText) {
+      p.appendChild(el("p", "", "Copy didn't work here. Press and hold the text below, copy it, then paste it into a message."));
+      var ta = el("textarea");
+      ta.id = "copyBox"; ta.readOnly = true; ta.value = fallbackText;
+      ta.setAttribute("aria-label", "My list");
+      p.appendChild(ta);
+      ta.focus(); ta.select();
+    }
+    var ul = el("ul");
+    pickedItems().forEach(function (it) {
+      var li = el("li");
+      li.appendChild(el("span", "", it.name));
+      var rm = el("button", "rm", "Remove");
+      rm.type = "button";
+      rm.setAttribute("aria-label", "Remove " + it.name + " from my list");
+      rm.addEventListener("click", function () {
+        var idx = Array.prototype.indexOf.call(ul.children, li);
+        picked.delete(it.id); persist(); paintCard(it); update();
+        var left = $("panel").querySelectorAll(".rm");
+        if (left.length) left[Math.min(idx, left.length - 1)].focus();
+      });
+      li.appendChild(rm);
+      ul.appendChild(li);
+    });
+    p.appendChild(ul);
+  }
+  function togglePanel(open, fallbackText) {
+    var p = $("panel");
+    if (!open && p.contains(document.activeElement) && !$("viewBtn").disabled) $("viewBtn").focus();
+    p.hidden = !open;
+    if (!open) p.textContent = "";
+    $("viewBtn").setAttribute("aria-expanded", String(open));
+    $("viewBtn").textContent = open ? "Hide" : "View";
+    if (open) renderPanel(fallbackText);
+  }
+  $("viewBtn").addEventListener("click", function () { togglePanel($("panel").hidden); });
+
+  var copyTimer = null;
+  function flashCopied() {
+    var b = $("copyBtn");
+    b.textContent = "Copied";
+    clearTimeout(copyTimer);
+    copyTimer = setTimeout(function () { b.textContent = "Copy my list"; }, 2000);
+  }
+  function legacyCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.setAttribute("readonly", "");
+    ta.style.position = "fixed"; ta.style.opacity = "0"; ta.style.top = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) {}
+    document.body.removeChild(ta);
+    return ok;
+  }
+  $("copyBtn").addEventListener("click", function () {
+    var text = listText();
+    function fail() { if (legacyCopy(text)) flashCopied(); else togglePanel(true, text); }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(flashCopied, fail);
+      } else fail();
+    } catch (e) { fail(); }
+  });
+
+  /* Photo viewer */
+  var shots = Array.prototype.slice.call(document.querySelectorAll(".shot"));
+  var vi = 0, lastFocus = null;
+  function showShot(i) {
+    vi = (i + shots.length) % shots.length;
+    var img = shots[vi].querySelector("img");
+    $("vImg").src = img.src;
+    $("vImg").alt = img.alt;
+    $("vCap").textContent = shots[vi].querySelector("span").textContent + " (" + (vi + 1) + " of " + shots.length + ")";
+  }
+  function openViewer(i) { lastFocus = document.activeElement; showShot(i); $("viewer").hidden = false; document.documentElement.style.overflow = "hidden"; $("vClose").focus(); }
+  function closeViewer() { $("viewer").hidden = true; document.documentElement.style.overflow = ""; if (lastFocus) lastFocus.focus(); }
+  shots.forEach(function (s, i) { s.addEventListener("click", function () { openViewer(i); }); });
+  $("vPrev").addEventListener("click", function () { showShot(vi - 1); });
+  $("vNext").addEventListener("click", function () { showShot(vi + 1); });
+  $("vClose").addEventListener("click", closeViewer);
+  $("viewer").addEventListener("click", function (e) { if (e.target === $("viewer")) closeViewer(); });
+  document.addEventListener("keydown", function (e) {
+    if ($("viewer").hidden) return;
+    if (e.key === "Tab") {
+      var ring = [$("vPrev"), $("vNext"), $("vClose")];
+      var at = ring.indexOf(document.activeElement);
+      e.preventDefault();
+      ring[(at + (e.shiftKey ? ring.length - 1 : 1)) % ring.length].focus();
+    }
+    else if (e.key === "Escape") closeViewer();
+    else if (e.key === "ArrowLeft") showShot(vi - 1);
+    else if (e.key === "ArrowRight") showShot(vi + 1);
+  });
+
+  var bar = document.querySelector(".listbar");
+  function padForBar() { document.body.style.paddingBottom = (bar.offsetHeight + 16) + "px"; }
+  if (window.ResizeObserver) new ResizeObserver(padForBar).observe(bar);
+  window.addEventListener("resize", padForBar);
+
+  apply();
+  update();
+  padForBar();
+})();
+</script>
+</body>
+</html>
