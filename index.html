@@ -247,6 +247,7 @@ h1 {
 .card[data-state="claimed"] .chip,
 .card[data-state="excluded"] .chip { background: var(--off-bg); color: var(--off-ink); border-color: var(--line); }
 .card[data-state="claimed"] h3 { color: var(--muted); }
+.card[data-state="available"][data-partial="1"] .chip { background: #F6E9C8; color: #7A5612; border-color: #E6D29B; }
 .card[data-state="excluded"] { background: var(--surface-2); box-shadow: none; }
 .card[data-state="excluded"] h3 { color: var(--muted); }
 
@@ -482,6 +483,12 @@ footer a { display: inline-block; padding: 10px 4px; }
   items.forEach(function (it) {
     if (it.status === "available" && claimedList[it.name.toLowerCase()]) it.status = "claimed";
   });
+  /* Partly claimed items (PARTIAL in claimed.js) stay available, with a "Some claimed" tag. */
+  var partialList = {};
+  (window.PARTIAL || []).forEach(function (n) { partialList[String(n).trim().toLowerCase()] = 1; });
+  items.forEach(function (it) {
+    it.partial = it.status === "available" && !!partialList[it.name.toLowerCase()];
+  });
 
   /* Search: ignore case, accents, apostrophes and plurals; match words in any order. */
   var TAGS = {
@@ -674,7 +681,8 @@ footer a { display: inline-block; padding: 10px 4px; }
   function paintCard(it) {
     var s = stateOf(it);
     it.card.setAttribute("data-state", s);
-    it.chip.textContent = chipText[s];
+    it.chip.textContent = s === "available" && it.partial ? "Some claimed" : chipText[s];
+    if (it.partial) it.card.setAttribute("data-partial", "1");
     if (it.btn) {
       var on = s === "picked";
       it.btn.textContent = on ? "Remove from list" : "Add to my list";

@@ -4,6 +4,8 @@
 Usage:
   claim.py add "Toaster" "Mugs"      mark cards as claimed
   claim.py remove "Toaster"          make a card available again
+  claim.py partial "Dinner plates"   tag cards "Some claimed" (still available)
+  claim.py unpartial "Dinner plates" remove the "Some claimed" tag
   claim.py list                      show what is claimed now
 
 It edits claimed.js next to this file, commits the change and pushes it, so the
@@ -22,6 +24,7 @@ HEADER = (
     "// To mark an item claimed, add its name in quotes with a comma after it.\n"
     "// To make it available again, delete its line.\n"
 )
+PARTIAL_HEADER = '// Partly claimed items: still available, shown with a "Some claimed" tag.\n'
 
 
 def git(*args):
@@ -34,19 +37,25 @@ def card_names():
     return re.findall(r'^\s+[acx]\(\d, "([^"]+)"', html, re.M)
 
 
-def read_claimed():
+def read_list(var="CLAIMED"):
     if not os.path.exists(CLAIMED_JS):
         return []
     with open(CLAIMED_JS, encoding="utf-8") as f:
         text = f.read()
-    m = re.search(r"window\.CLAIMED\s*=\s*\[(.*?)\]", text, re.S)
+    m = re.search(r"window\.%s\s*=\s*\[(.*?)\]" % var, text, re.S)
     return re.findall(r'"([^"]*)"', m.group(1)) if m else []
 
 
-def write_claimed(names):
-    body = "".join('  "%s",\n' % n for n in names)
+def read_claimed():
+    return read_list("CLAIMED")
+
+
+def write_lists(claimed, partial):
+    body = "".join('  "%s",\n' % n for n in claimed)
+    pbody = "".join('  "%s",\n' % n for n in partial)
     with open(CLAIMED_JS, "w", encoding="utf-8") as f:
-        f.write(HEADER + "window.CLAIMED = [\n" + body + "];\n")
+        f.write(HEADER + "window.CLAIMED = [\n" + body + "];\n"
+                + PARTIAL_HEADER + "window.PARTIAL = [\n" + pbody + "];\n")
 
 
 def resolve(query, choices):
@@ -67,7 +76,7 @@ def resolve(query, choices):
 
 def main():
     args = sys.argv[1:]
-    if not args or args[0] not in ("add", "remove", "list"):
+    if not args or args[0] not in ("add", "remove", "partial", "unpartial", "list"):
         print(__doc__)
         return 2
 
@@ -78,36 +87,56 @@ def main():
         print("Could not get the latest version from GitHub:\n" + (pulled.stderr or pulled.stdout))
         return 1
 
-    current = read_claimed()
+    claimed = read_list("CLAIMED")
+    partial = read_list("PARTIAL")
     if mode == "list":
-        print("\n".join(current) if current else "Nothing is claimed yet.")
+        print("Claimed:\n" + ("\n".join(claimed) if claimed else "  (none)"))
+        print("Some claimed:\n" + ("\n".join(partial) if partial else "  (none)"))
         return 0
     if not queries:
         print("Give at least one item name.")
         return 2
 
-    updated = list(current)
     changes = []
     for query in queries:
-        if mode == "add":
+        if mode in ("add", "partial"):
             name = resolve(query, card_names())
-            if name and name not in updated:
-                updated.append(name)
+            if not name:
+                continue
+            if mode == "add":
+                if name in claimed:
+                    print("%s is already claimed." % name)
+                    continue
+                claimed.append(name)
+                if name in partial:
+                    partial.remove(name)  # fully claimed now
+            else:
+                if name in claimed:
+                    print("%s is fully claimed already." % name)
+                    continue
+                if name in partial:
+                    print("%s is already tagged Some claimed." % name)
+                    continue
+                partial.append(name)
+            changes.append(name)
+        elif mode == "remove":
+            name = resolve(query, claimed)
+            if name:
+                claimed.remove(name)
                 changes.append(name)
-            elif name:
-                print("%s is already claimed." % name)
         else:
-            name = resolve(query, current)
-            if name and name in updated:
-                updated.remove(name)
+            name = resolve(query, partial)
+            if name:
+                partial.remove(name)
                 changes.append(name)
 
     if not changes:
         print("Nothing changed.")
         return 1
 
-    write_claimed(updated)
-    verb = "Claimed" if mode == "add" else "Available again"
+    write_lists(claimed, partial)
+    verb = {"add": "Claimed", "remove": "Available again",
+            "partial": "Some claimed", "unpartial": "Fully available"}[mode]
     message = "%s: %s" % (verb, ", ".join(changes))
     git("add", "claimed.js")
     committed = git("commit", "-m", message)
