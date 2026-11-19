@@ -14,4 +14,6 @@ window.CLAIMED = [
 ];
 // Partly claimed items: still available, shown with a "Some claimed" tag.
 window.PARTIAL = [
+  "Dinner plates",
+  "Small plates",
 ];
