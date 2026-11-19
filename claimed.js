@@ -8,4 +8,5 @@ window.CLAIMED = [
   "Wine glasses",
   "Food chopper",
   "Orange tumbler",
+  "AeroPress filters",
 ];
