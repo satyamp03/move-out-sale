@@ -10,7 +10,8 @@ window.CLAIMED = [
   "Orange tumbler",
   "AeroPress filters",
   "Box grater",
-  "Dinner plates",
-  "Small plates",
   "Toaster",
+];
+// Partly claimed items: still available, shown with a "Some claimed" tag.
+window.PARTIAL = [
 ];
