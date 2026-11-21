@@ -16,4 +16,6 @@ window.CLAIMED = [
 window.PARTIAL = [
   "Dinner plates",
   "Small plates",
+  "Tongs",
+  "Pots with lids",
 ];
