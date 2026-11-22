@@ -3,7 +3,6 @@
 // To make it available again, delete its line.
 window.CLAIMED = [
   "Whisk",
-  "Frying pans",
   "Chef's knife",
   "Wine glasses",
   "Food chopper",
