@@ -17,4 +17,5 @@ window.PARTIAL = [
   "Small plates",
   "Tongs",
   "Pots with lids",
+  "Frying pans",
 ];
