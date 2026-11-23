@@ -301,6 +301,15 @@ footer a { display: inline-block; padding: 10px 4px; }
   padding: 16px; gap: 12px;
 }
 [hidden] { display: none !important; }
+.peek {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 10px;
+  min-height: 44px; padding: 4px 14px 4px 4px;
+  background: var(--surface-2); color: var(--ink);
+  border: 1px solid var(--line); border-radius: 999px;
+  font: inherit; font-size: 0.8125rem; font-weight: 700; cursor: pointer;
+}
+.peek:hover { border-color: var(--accent); }
+.peek img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; display: block; }
 .viewer img { max-width: 100%; max-height: 78vh; max-height: calc(100dvh - 150px); border-radius: 14px; }
 .viewer .cap { color: #FAF6EF; font-size: 0.8125rem; letter-spacing: .08em; text-transform: uppercase; }
 .viewer .vbtns { display: flex; gap: 10px; }
@@ -410,6 +419,7 @@ footer a { display: inline-block; padding: 10px 4px; }
   a(0, "Loaf pan", "Grey metal. Lower cabinet, right, top shelf.");
   a(0, "Roasting pan", "Black and speckled, with a clear lid. Lower cabinet, right, bottom shelf.");
   a(0, "Mixing bowls", "Red, orange and blue, nested. Lower cabinet, right, bottom shelf.");
+  a(0, "Large blue bowl", "Blue outside, white inside. Melamine. Lower cabinet, right, bottom shelf.");
   a(0, "Idli steaming trays", "Stainless steel, stacked, with a lid. Lower cabinet, right, bottom shelf.");
   a(0, "Colanders", "Two white colanders, a steel one and a red-handled strainer. Lower cabinet, left, bottom shelf.");
   a(0, "Box grater", "Stainless steel. Lower cabinet, left, bottom shelf.");
@@ -481,6 +491,19 @@ footer a { display: inline-block; padding: 10px 4px; }
   a(3, "Glass lunch boxes", "A bunch. Not in the photos. Ask me.");
   a(3, "Extra measuring cups", "A set. Not in the photos. Ask me.");
 
+  /* Item photos: name -> [[file, caption], ...]. A card with photos gets a "See photos" button. */
+  var PHOTOS = {
+    "Large blue bowl": [
+      ["img/blue-bowl-1.jpg", "Angled view"],
+      ["img/blue-bowl-2.jpg", "Side view"]
+    ],
+    "Stoneware baking dish": [
+      ["img/stoneware-1.jpg", "Inside view"],
+      ["img/stoneware-2.jpg", "Underside, with the size label"],
+      ["img/stoneware-3.jpg", "On the scale, about 1.8 kg"]
+    ]
+  };
+
   /* Claimed items come from claimed.js (see claim.py). Names must match the card names. */
   var claimedList = {};
   (window.CLAIMED || []).forEach(function (n) { claimedList[String(n).trim().toLowerCase()] = 1; });
@@ -506,6 +529,7 @@ footer a { display: inline-block; padding: 10px 4px; }
     "Roasting pan": "roaster oven turkey",
     "Mixing bowls": "bowl bowls",
     "Idli steaming trays": "idli steamer steam rack",
+    "Large blue bowl": "mixing bowl bowls melamine plastic big salad serving",
     "Pot lids": "lid lids cover pan pot glass",
     "Utensil holder": "utensil crock caddy spoon holder",
     "Large cream bowls": "bowl bowls serving white dishes",
@@ -668,6 +692,19 @@ footer a { display: inline-block; padding: 10px 4px; }
     main.appendChild(el("h3", "", it.name));
     main.appendChild(el("p", "", it.note));
     if (it.reason) main.appendChild(el("p", "reason", it.reason));
+    if (PHOTOS[it.name]) {
+      var pk = el("button", "peek");
+      pk.type = "button";
+      var th = document.createElement("img");
+      th.src = PHOTOS[it.name][0][0]; th.alt = ""; th.loading = "lazy";
+      pk.appendChild(th);
+      pk.appendChild(document.createTextNode(PHOTOS[it.name].length > 1 ? "See " + PHOTOS[it.name].length + " photos" : "See photo"));
+      pk.setAttribute("aria-label", "See photos of " + it.name);
+      pk.addEventListener("click", function () {
+        openViewer(PHOTOS[it.name].map(function (p) { return { src: p[0], alt: it.name + ": " + p[1], cap: it.name + ". " + p[1] }; }), 0);
+      });
+      main.appendChild(pk);
+    }
     card.appendChild(main);
     var btn = null;
     if (it.status === "available") {
@@ -838,17 +875,21 @@ footer a { display: inline-block; padding: 10px 4px; }
 
   /* Photo viewer */
   var shots = Array.prototype.slice.call(document.querySelectorAll(".shot"));
-  var vi = 0, lastFocus = null;
+  var galleryShots = shots.map(function (s) {
+    var im = s.querySelector("img");
+    return { src: im.src, alt: im.alt, cap: s.querySelector("span").textContent };
+  });
+  var vset = galleryShots, vi = 0, lastFocus = null;
   function showShot(i) {
-    vi = (i + shots.length) % shots.length;
-    var img = shots[vi].querySelector("img");
-    $("vImg").src = img.src;
-    $("vImg").alt = img.alt;
-    $("vCap").textContent = shots[vi].querySelector("span").textContent + " (" + (vi + 1) + " of " + shots.length + ")";
+    vi = (i + vset.length) % vset.length;
+    $("vImg").src = vset[vi].src;
+    $("vImg").alt = vset[vi].alt;
+    $("vCap").textContent = vset[vi].cap + " (" + (vi + 1) + " of " + vset.length + ")";
+    $("vPrev").hidden = $("vNext").hidden = vset.length < 2;
   }
-  function openViewer(i) { lastFocus = document.activeElement; showShot(i); $("viewer").hidden = false; document.documentElement.style.overflow = "hidden"; $("vClose").focus(); }
+  function openViewer(set, i) { lastFocus = document.activeElement; vset = set; showShot(i); $("viewer").hidden = false; document.documentElement.style.overflow = "hidden"; $("vClose").focus(); }
   function closeViewer() { $("viewer").hidden = true; document.documentElement.style.overflow = ""; if (lastFocus) lastFocus.focus(); }
-  shots.forEach(function (s, i) { s.addEventListener("click", function () { openViewer(i); }); });
+  shots.forEach(function (s, i) { s.addEventListener("click", function () { openViewer(galleryShots, i); }); });
   $("vPrev").addEventListener("click", function () { showShot(vi - 1); });
   $("vNext").addEventListener("click", function () { showShot(vi + 1); });
   $("vClose").addEventListener("click", closeViewer);
@@ -856,7 +897,7 @@ footer a { display: inline-block; padding: 10px 4px; }
   document.addEventListener("keydown", function (e) {
     if ($("viewer").hidden) return;
     if (e.key === "Tab") {
-      var ring = [$("vPrev"), $("vNext"), $("vClose")];
+      var ring = [$("vPrev"), $("vNext"), $("vClose")].filter(function (b) { return !b.hidden; });
       var at = ring.indexOf(document.activeElement);
       e.preventDefault();
       ring[(at + (e.shiftKey ? ring.length - 1 : 1)) % ring.length].focus();
