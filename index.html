@@ -411,7 +411,8 @@ footer a { display: inline-block; padding: 10px 4px; }
 
   /* Cookware & Bakeware */
   a(0, "Pots with lids", "Two stainless steel pots left. Lower cabinets.");
-  a(0, "Frying pans", "One nonstick pan left. Lower cabinets.");
+  a(0, "Orange pot", "Orange nonstick pot with a glass lid and two handles. Lower cabinet, right, bottom shelf.");
+  a(0, "Frying pans", "Three medium to large nonstick pans left. Lower cabinets.");
   a(0, "Baking sheets", "A stack of dark, gold and grey sheets. Lower cabinet, right, top shelf.");
   a(0, "Glass baking dish", "Rectangular. Lower cabinet, right, top shelf.");
   a(0, "Blue baking dishes", "Two ceramic dishes. Lower cabinet, right, top shelf.");
@@ -493,6 +494,27 @@ footer a { display: inline-block; padding: 10px 4px; }
 
   /* Item photos: name -> [[file, caption], ...]. A card with photos gets a "See photos" button. */
   var PHOTOS = {
+    "Loaf pan": [
+      ["img/loaf-pan-1.jpg", "Inside view"],
+      ["img/loaf-pan-2.jpg", "Underside"]
+    ],
+    "Roasting pan": [
+      ["img/roasting-pan-1.jpg", "With its clear lid"],
+      ["img/roasting-pan-2.jpg", "Inside view"],
+      ["img/roasting-pan-3.jpg", "Inside view, close up"]
+    ],
+    "Orange pot": [
+      ["img/orange-pot-1.jpg", "Orange nonstick pot with its glass lid"]
+    ],
+    "Mixing bowls": [
+      ["img/mixing-bowls-1.jpg", "Red, blue and orange, nested"]
+    ],
+    "Colanders": [
+      ["img/colanders-1.jpg", "Two white colanders, a steel one and the red-handled strainer"]
+    ],
+    "Box grater": [
+      ["img/box-grater-1.jpg", "Stainless steel, with a black handle"]
+    ],
     "Large blue bowl": [
       ["img/blue-bowl-1.jpg", "Angled view"],
       ["img/blue-bowl-2.jpg", "Side view"]
@@ -521,6 +543,7 @@ footer a { display: inline-block; padding: 10px 4px; }
   var TAGS = {
     "Pots with lids": "pot saucepan stockpot lid cookware",
     "Frying pans": "frying fry pan skillet pans nonstick",
+    "Orange pot": "pot saucepan casserole lid cookware nonstick",
     "Baking sheets": "baking sheet cookie tray pan oven",
     "Glass baking dish": "pyrex casserole oven",
     "Blue baking dishes": "casserole ceramic oven",
