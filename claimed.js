@@ -16,6 +16,8 @@ window.CLAIMED = [
   "Pots with lids",
   "Loaf pan",
   "Large blue bowl",
+  "Stoneware baking dish",
+  "Orange pot",
 ];
 // Partly claimed items: still available, shown with a "Some claimed" tag.
 window.PARTIAL = [
